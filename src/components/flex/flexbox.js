@@ -1,24 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import Styled from './flexbox.css';
 
-const FlexParent = styled.div`
-  display: flex;
-  flex-direction: ${({direction}) => direction};
-  justify-content: ${({justify}) => justify};
-  align-items: ${({align}) => align};
-`;
+const Flexbox = (props) => (
+  <Styled {...props}>
+    {props.children}
+  </Styled>
+);
 
-FlexParent.propTypes = {
+Flexbox.propTypes = {
+  children: PropTypes.node,
+  parent: PropTypes.bool,
+  child: PropTypes.bool,
   direction: PropTypes.oneOf(['row', 'row-reverse', 'column', 'column-reverse', 'initial', 'inherit']),
   justify: PropTypes.oneOf(['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'initial', 'inherit']),
   align: PropTypes.oneOf(['stretch', 'center', 'flex-start', 'flex-end', 'baseline', 'initial', 'inherit']),
+  gap: PropTypes.string,
+  basis: PropTypes.string,
+  grow: PropTypes.string,
+  shrink: PropTypes.string,
 };
 
-FlexParent.defaultProps = {
+Flexbox.defaultProps = {
+  parent: false,
+  child: false,
   direction: 'row',
   justify: 'flex-start',
   align: 'flex-start',
+  basis: 'auto',
+  grow: '0',
+  shrink: '0',
 };
 
-export default FlexParent;
+export default Flexbox;
