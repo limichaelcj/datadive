@@ -23,16 +23,9 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div style={{maxWidth: 800, margin: 'auto', paddingTop: '1rem'}}>
-        <main>
-          {children}
-        </main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <main style={{width: '100%', minHeight: '100vh', maxHeight: '100vh'}}>
+        {children}
+      </main>
     </>
   );
 }
