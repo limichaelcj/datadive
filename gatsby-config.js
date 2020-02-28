@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Basic Starter`,
-    description: `A basic Gatsby starter with a dynamic Image component.`,
+    title: `Data Dive`,
+    description: `Quickly draft charts for your data.`,
     author: `@mcli830`,
   },
   plugins: [
@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-basic`,
-        short_name: `minimal`,
+        name: `datadive`,
+        short_name: `datadive`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
