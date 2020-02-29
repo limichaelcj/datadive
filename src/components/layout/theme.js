@@ -39,7 +39,10 @@ export default {
     black: getAlphaLevels(black),
     white: getAlphaLevels(white),
   },
-  text: black,
+  text: makePalette(black),
+  font: {
+    main: "'Roboto', sans-serif",
+  },
   background: {
     main: chroma(white).darken(scaleSoft),
     dark: chroma(white).darken(scaleSoft * 2),

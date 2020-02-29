@@ -19,7 +19,7 @@ const flatStyle = css`
   padding: .8rem;
   border-left: 3px solid ${props => props.active ? props.theme.primary.main : 'transparent'};
   background-color: ${props => props.active ? props.theme.primary.alpha.vl : 'inherit'};
-  color: ${props => props.active ? props.theme.primary.dark : props.theme.text};
+  color: ${props => props.active ? props.theme.primary.dark : props.theme.text.main};
 `;
 
 const baseStyle = css`

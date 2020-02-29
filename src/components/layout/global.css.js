@@ -10,6 +10,7 @@ export default createGlobalStyle`
     background-color: ${props => props.theme.background.main};
     padding: 0;
     margin: 0;
+    font-family: ${props => props.theme.font.main};
   }
 
   h1,h2,h3,h4,h5,h6 {
