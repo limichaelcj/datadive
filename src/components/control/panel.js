@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Styled from './panel.css';
 import Segment from '../segment/segment';
 import Datalist from './datalist';
+import ChartSeries from './chartSeries';
 
 const ControlPanel = ({ datasets }) => {
   return (
@@ -13,17 +14,14 @@ const ControlPanel = ({ datasets }) => {
       </Segment>
       <Segment>
         <h3>Chart Types</h3>
-        <ul>
-          {[1,2,3,4,5,6].map((v,i) => (
-            <li key={i}>
-              <strong>Chart Type {v}</strong>
-              <p>Description of chart type {v}...</p>
-            </li>
-          ))}
-        </ul>
+        <ChartSeries active="Arc" />
       </Segment>
     </Styled>
   );
 };
+
+ControlPanel.propTypes = {
+  dataset: PropTypes.object,
+}
 
 export default ControlPanel;

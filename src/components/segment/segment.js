@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Styled from './segment.css';
 
-const Segment = ({ children, padding, margin, style }) => {
+const Segment = (props) => {
   return (
-    <Styled padding={padding} margin={margin} style={style}>
-      {children}
+    <Styled {...props}>
+      {props.children}
     </Styled>
   );
 };

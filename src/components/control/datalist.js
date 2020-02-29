@@ -1,27 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Styled from './datalist.css';
+import List from '../list/list';
+import ListItem from '../list/item';
 
 const Datalist = ({ datasets }) => {
 
   const entries = Object.entries(datasets);
 
   return (
-    <Styled>
-      {entries.length ? (
-        entries
-          .filter(([key, data]) => data !== null)
-          .map(([key, data]) => (
-            <li key={key}>
-              <strong>{key}</strong>
-              <span>{JSON.stringify(data)}</span>
-            </li>
-          )
+    <List variant="inset" maxHeight="15rem" width="300px">
+      {entries.length ? entries
+        .filter(([key, data]) => data !== null)
+        .map(([key, data]) => (
+          <ListItem variant="inset" key={key}>
+            <strong>{key}</strong>
+            <span>{JSON.stringify(data)}</span>
+          </ListItem>
         )
       ) : (
-        <li>No datasets.</li>
+        <ListItem>No datasets.</ListItem>
       )}
-    </Styled>
+    </List>
   );
 };
 

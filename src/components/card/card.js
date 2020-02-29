@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Styled from './card.css';
 
-const Card = ({ children, width, height, style }) => {
+const Card = (props) => {
   return (
-    <Styled width={width} height={height} style={style}>
-      {children}
+    <Styled {...props}>
+      {props.children}
     </Styled>
   )
 };

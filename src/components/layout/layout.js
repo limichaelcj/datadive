@@ -8,20 +8,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GlobalStyles from './global.css';
-import { useStaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 import theme from './theme';
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
 
   return (
     <>

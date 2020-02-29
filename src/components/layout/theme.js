@@ -17,6 +17,14 @@ const getAlphaLevels = (color) => {
   });
   return alphas;
 }
+const makePalette = (color) => {
+  return ({
+    main: color,
+    light: chroma(color).brighten(),
+    dark: chroma(color).darken(),
+    alpha: getAlphaLevels(color),
+  });
+}
 
 // colors
 const black = '#111';
@@ -26,7 +34,7 @@ const primary = '#2C949A';
 export default {
   black,
   white,
-  primary,
+  primary: makePalette(primary),
   alpha: {
     black: getAlphaLevels(black),
     white: getAlphaLevels(white),
