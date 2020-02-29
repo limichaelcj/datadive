@@ -22,7 +22,10 @@ const IndexPage = () => {
       ...state,
       charts: {
         ...state.charts,
-        [Object.keys(state.charts).length]: { datakey: null },
+        [Object.keys(state.charts).length]: {
+          datakey: null,
+          series: 'Line',
+        },
       },
     });
   };
@@ -34,11 +37,25 @@ const IndexPage = () => {
     })
   };
 
+  const setSeries = (series) => () => {
+    setState({
+      ...state,
+      charts: {
+        ...state.charts,
+        [state.selected]: {
+          ...state.charts[state.selected],
+          series,
+        }
+      }
+    })
+  }
+
   // functon generator:
   // generates random data for the selected chart
-  const generateRandom = (chartKey) => () => {
+  const generateRandom = () => {
 
     const datakey = Object.keys(state.data).length;
+    const chartkey = state.selected;
 
     setState({
       ...state,
@@ -51,15 +68,15 @@ const IndexPage = () => {
       },
       charts: {
         ...state.charts,
-        [chartKey]: {
-          ...state.charts[chartKey],
+        [chartkey]: {
+          ...state.charts[chartkey],
           datakey,
         }
       }
     });
   };
 
-  console.log(state.selected)
+  console.log(state)
 
   return (
     <Layout>
@@ -69,7 +86,12 @@ const IndexPage = () => {
 
         {/* Left Panel */}
         <Flexbox child basis="20rem">
-          <ControlPanel datasets={state.data} />
+          <ControlPanel
+            datasets={state.data}
+            selectedSeries={state.selected ? state.charts[state.selected].series : null}
+            setSeries={setSeries}
+            generateRandom={generateRandom}
+          />
         </Flexbox>
 
         {/* Right Panel */}
@@ -83,8 +105,8 @@ const IndexPage = () => {
                 <Chart
                   key={key}
                   dataset={state.data[chart.datakey]}
+                  variant={chart.series}
                   active={state.selected === key}
-                  generateRandom={generateRandom(key)}
                   selectChart={selectChart(key)}
                 />
               ))}

@@ -9,14 +9,15 @@ import {
   HorizontalGridLines,
   XAxis,
   YAxis,
-  LineSeries
 } from 'react-vis';
+import chartVariants from './lib/variants';
 // import react-vis stylesheet
 import '../../../node_modules/react-vis/dist/style.css';
 
-const Chart = ({ dataset, active, selectChart, generateRandom }) => {
-
-
+const Chart = ({ dataset, active, variant, selectChart, generateRandom }) => {
+  
+  const Variant = chartVariants[variant].component;
+  console.log(Variant);
 
   const renderChart = (data) => {
     if (data) {
@@ -26,13 +27,11 @@ const Chart = ({ dataset, active, selectChart, generateRandom }) => {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <LineSeries data={dataset} />
+          <Variant data={data} />
         </XYPlot>
       );
     } else {
-      return (
-        <NoData />
-      );
+      return <NoData />;
     }
   }
 
@@ -55,8 +54,13 @@ const Chart = ({ dataset, active, selectChart, generateRandom }) => {
 Chart.propTypes = {
   dataset: PropTypes.array,
   active: PropTypes.bool,
+  variant: PropTypes.oneOf(Object.keys(chartVariants)),
   selectChart: PropTypes.func,
   handleHydrate: PropTypes.func,
+}
+
+Chart.defaultProps = {
+  variant: 'Line',
 }
 
 export default Chart;
