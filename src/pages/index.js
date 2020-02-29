@@ -55,7 +55,6 @@ const IndexPage = () => {
   const generateRandom = () => {
 
     const datakey = Object.keys(state.data).length;
-    const chartkey = state.selected;
 
     setState({
       ...state,
@@ -66,13 +65,20 @@ const IndexPage = () => {
           y: Math.floor(Math.random()*10),
         })),
       },
-      charts: state.selected !== null ? ({
+    });
+  };
+
+  // link data to chart
+  const linkDataToChart = (chartkey) => (datakey) => {
+    setState({
+      ...state,
+      charts: {
         ...state.charts,
         [chartkey]: {
           ...state.charts[chartkey],
           datakey,
         }
-      }) : ({...state.charts}),
+      }
     });
   };
 
@@ -109,6 +115,7 @@ const IndexPage = () => {
                   variant={chart.series}
                   active={state.selected === key}
                   selectChart={selectChart(key)}
+                  linkData={linkDataToChart(key)}
                 />
               ))}
               <NewChart onClick={createChart} />

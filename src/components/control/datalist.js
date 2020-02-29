@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import List from '../list/list';
 import ListItem from '../list/item';
+import Draggable from '../dragndrop/draggable';
 
 const Datalist = ({ datasets }) => {
 
@@ -12,10 +13,16 @@ const Datalist = ({ datasets }) => {
       {entries.length ? entries
         .filter(([key, data]) => data !== null)
         .map(([key, data]) => (
-          <ListItem variant="inset" key={key}>
-            <strong>{key}</strong>
-            <span>{JSON.stringify(data)}</span>
-          </ListItem>
+          <Draggable
+            id="datatochart"
+            key={key}
+            sendData={{ datakey: key }}
+          >
+            <ListItem variant="inset">
+              <strong>{key}</strong>
+              <span>{JSON.stringify(data)}</span>
+            </ListItem>
+          </Draggable>
         )
       ) : (
         <ListItem>No datasets.</ListItem>

@@ -4,6 +4,7 @@ import Segment from '../segment/segment';
 import Card from '../card/card';
 import Flexbox from '../flex/flexbox';
 import NoData from './noData';
+import Droppable from '../dragndrop/droppable';
 import {
   XYPlot,
   VerticalGridLines,
@@ -15,10 +16,13 @@ import chartVariants from './lib/variants';
 // import react-vis stylesheet
 import '../../../node_modules/react-vis/dist/style.css';
 
-const Chart = ({ name, dataset, active, variant, selectChart, generateRandom }) => {
-  
+const Chart = ({ name, dataset, active, variant, selectChart, linkData }) => {
+
   const Variant = chartVariants[variant].component;
-  console.log(Variant);
+
+  const dataDrop = (data) => {
+    linkData(data.datakey);
+  };
 
   const renderChart = (data) => {
     if (data) {
@@ -37,18 +41,24 @@ const Chart = ({ name, dataset, active, variant, selectChart, generateRandom }) 
   }
 
   return (
-    <Card onClick={selectChart} active={active} style={{ margin: '1rem' }}>
-      <Flexbox parent direction="column">
-        {name && (
-          <Segment padding="0 0 1rem">
-            <h5>Dataset {name}</h5>
-          </Segment>
-        )}
-        <Flexbox child grow="1" shrink="1">
-          {renderChart(dataset)}
+    <Droppable
+      id="datatochart"
+      receiveData={['datakey']}
+      handleDrop={dataDrop}
+    >
+      <Card onClick={selectChart} active={active} style={{ margin: '1rem' }}>
+        <Flexbox parent direction="column">
+          {name && (
+            <Segment padding="0 0 1rem">
+              <h5>Dataset {name}</h5>
+            </Segment>
+          )}
+          <Flexbox child grow="1" shrink="1">
+            {renderChart(dataset)}
+          </Flexbox>
         </Flexbox>
-      </Flexbox>
-    </Card>
+      </Card>
+    </Droppable>
   );
 };
 
@@ -57,7 +67,7 @@ Chart.propTypes = {
   active: PropTypes.bool,
   variant: PropTypes.oneOf(Object.keys(chartVariants)),
   selectChart: PropTypes.func,
-  handleHydrate: PropTypes.func,
+  linkData: PropTypes.func,
 }
 
 Chart.defaultProps = {
