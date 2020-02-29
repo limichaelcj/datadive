@@ -11,16 +11,15 @@ const Datalist = ({ datasets }) => {
   return (
     <List variant="inset" maxHeight="12rem" width="300px">
       {entries.length ? entries
-        .filter(([key, data]) => data !== null)
-        .map(([key, data]) => (
+        .map(([key, dataset]) => (
           <Draggable
             id="datatochart"
             key={key}
             sendData={{ datakey: key }}
           >
             <ListItem variant="inset">
-              <strong>{key}</strong>
-              <span>{JSON.stringify(data)}</span>
+              <strong>{dataset.name}</strong>
+              <span>{JSON.stringify(dataset.data)}</span>
             </ListItem>
           </Draggable>
         )

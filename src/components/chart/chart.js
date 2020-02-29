@@ -20,25 +20,26 @@ const Chart = ({ name, dataset, active, variant, selectChart, linkData }) => {
 
   const Variant = chartVariants[variant].component;
 
-  const dataDrop = (data) => {
-    linkData(data.datakey);
+  const dataDrop = (dropData) => {
+    linkData(dropData.datakey);
   };
 
-  const renderChart = (data) => {
-    if (data) {
-      return (
+  const renderChart = (dataset) => (
+    <Flexbox parent direction="column">
+      <Segment padding="0 0 1rem">
+        <h5>{dataset.name}</h5>
+      </Segment>
+      <Flexbox child grow="1" shrink="1">
         <XYPlot height={300} width={300}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <Variant data={data} />
+          <Variant data={dataset.data} />
         </XYPlot>
-      );
-    } else {
-      return <NoData />;
-    }
-  }
+      </Flexbox>
+    </Flexbox>
+  );
 
   return (
     <Droppable
@@ -47,16 +48,7 @@ const Chart = ({ name, dataset, active, variant, selectChart, linkData }) => {
       handleDrop={dataDrop}
     >
       <Card onClick={selectChart} active={active} style={{ margin: '1rem' }}>
-        <Flexbox parent direction="column">
-          {name && (
-            <Segment padding="0 0 1rem">
-              <h5>Dataset {name}</h5>
-            </Segment>
-          )}
-          <Flexbox child grow="1" shrink="1">
-            {renderChart(dataset)}
-          </Flexbox>
-        </Flexbox>
+        {dataset ? renderChart(dataset) : <NoData />}
       </Card>
     </Droppable>
   );

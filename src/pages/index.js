@@ -54,16 +54,20 @@ const IndexPage = () => {
   // generates random data for the selected chart
   const generateRandom = () => {
 
-    const datakey = Object.keys(state.data).length;
+    const datakeys = Object.keys(state.data);
+    const datakey = datakeys.length ? Math.max(...datakeys) + 1 : 1;
 
     setState({
       ...state,
       data: {
         ...state.data,
-        [datakey]: Array(10).fill(0).map((_,i) => ({
-          x: i,
-          y: Math.floor(Math.random()*10),
-        })),
+        [datakey]: {
+          name: `Random ${datakey}`,
+          data: Array(10).fill(0).map((_,i) => ({
+            x: i,
+            y: Math.floor(Math.random()*10),
+          })),
+        },
       },
     });
   };
