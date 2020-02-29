@@ -3,29 +3,50 @@ import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
 import Flexbox from '../components/flex/flexbox';
 import Chart from '../components/chart/chart';
-
-const initialState = {
-  chartType: 'xyplot',
-  data: [
-    {x: 0, y: 8},
-    {x: 1, y: 5},
-    {x: 2, y: 4},
-    {x: 3, y: 9},
-    {x: 4, y: 1},
-    {x: 5, y: 7},
-    {x: 6, y: 6},
-    {x: 7, y: 3},
-    {x: 8, y: 2},
-    {x: 9, y: 0}
-  ],
-}
+import NewChart from '../components/chart/new';
 
 const IndexPage = () => {
 
   const [state, setState] = React.useState({
-    ...initialState,
-    data: [...initialState.data],
+    data: {},
+    charts: {},
   });
+
+  // creates a new chart with no data
+  const createChart = () => {
+    setState({
+      ...state,
+      charts: {
+        ...state.charts,
+        [Object.keys(state.charts).length]: { datakey: null },
+      },
+    });
+  }
+
+  // functon generator:
+  // generates random data for the selected chart
+  const generateRandom = (chartKey) => () => {
+
+    const datakey = Object.keys(state.data).length;
+
+    setState({
+      ...state,
+      data: {
+        ...state.data,
+        [datakey]: Array(10).fill(0).map((_,i) => ({
+          x: i,
+          y: Math.floor(Math.random()*10),
+        })),
+      },
+      charts: {
+        ...state.charts,
+        [chartKey]: {
+          ...state.charts[chartKey],
+          datakey,
+        }
+      }
+    });
+  }
 
   return (
     <Layout>
@@ -49,7 +70,16 @@ const IndexPage = () => {
         {/* Right Panel */}
         <Flexbox child grow="1" shrink="1">
           <h3>Chart Visualizer</h3>
-          <Chart dataset={state.data} />
+          <Flexbox parent direction="row" wrap align="center">
+            {Object.entries(state.charts).map(([key, chart]) => (
+              <Chart
+                key={key}
+                dataset={state.data[chart.datakey]}
+                generateRandom={generateRandom(key)}
+              />
+            ))}
+            <NewChart onClick={createChart} />
+          </Flexbox>
         </Flexbox>
 
       </Flexbox>

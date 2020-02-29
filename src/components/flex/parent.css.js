@@ -5,8 +5,11 @@ export default css`
   flex-direction: ${props => props.direction};
   justify-content: ${props => props.justify};
   align-items: ${props => props.align};
+  flex-wrap: ${props => props.wrap ? 'wrap' : 'nowrap'};
 
-  & > *:not(:${props => props.gapSelector}-child) {
-    margin-${props => props.gapSide}: ${props => props.gap || 0};
-  }
+  ${props => props.gap ? css`
+    & > *:not(:${props => props.gapSelector}-child) {
+      margin-${props => props.gapSide}: ${props => props.gap || 0};
+    }
+  ` : ''}
 `;

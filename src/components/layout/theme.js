@@ -6,7 +6,7 @@ const scaleSoft = .2;
 // colors
 const black = '#111';
 const white = '#fff';
-const primary = '#f2f2f2';
+const primary = '#2C949A';
 
 export default {
   black,
