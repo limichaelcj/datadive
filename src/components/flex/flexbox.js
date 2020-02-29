@@ -28,7 +28,6 @@ Flexbox.defaultProps = {
   direction: 'row',
   justify: 'flex-start',
   align: 'flex-start',
-  gap: '0',
   wrap: false,
   basis: 'auto',
   grow: '0',

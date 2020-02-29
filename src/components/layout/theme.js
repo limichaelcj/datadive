@@ -14,6 +14,13 @@ export default {
   primary,
   text: black,
   background: chroma(white).darken(scaleSoft),
-  shadow: chroma(black).alpha(.2),
   paper: white,
+  shadow: {
+    sm: `.1rem .1rem 1rem -.5rem ${chroma(black).alpha(.2)}`,
+    md: `.2rem .2rem 1.4rem -.7rem ${chroma(black).alpha(.4)}`,
+    lg: `.3rem .3rem 1.8rem -.9rem ${chroma(black).alpha(.6)}`,
+  },
+  transition: {
+    button: '100ms ease-out',
+  },
 }

@@ -5,7 +5,7 @@ import Styled from './new.css';
 const NewChart = ({ onClick }) => {
   return (
     <Styled onClick={onClick}>
-      +
+      <span>+</span>
     </Styled>
   );
 };
