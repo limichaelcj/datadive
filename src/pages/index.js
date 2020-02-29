@@ -66,13 +66,13 @@ const IndexPage = () => {
           y: Math.floor(Math.random()*10),
         })),
       },
-      charts: {
+      charts: state.selected !== null ? ({
         ...state.charts,
         [chartkey]: {
           ...state.charts[chartkey],
           datakey,
         }
-      }
+      }) : ({...state.charts}),
     });
   };
 
@@ -104,6 +104,7 @@ const IndexPage = () => {
               {Object.entries(state.charts).map(([key, chart]) => (
                 <Chart
                   key={key}
+                  name={chart.datakey || null}
                   dataset={state.data[chart.datakey]}
                   variant={chart.series}
                   active={state.selected === key}

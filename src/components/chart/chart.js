@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Segment from '../segment/segment';
 import Card from '../card/card';
 import Flexbox from '../flex/flexbox';
 import NoData from './noData';
@@ -14,7 +15,7 @@ import chartVariants from './lib/variants';
 // import react-vis stylesheet
 import '../../../node_modules/react-vis/dist/style.css';
 
-const Chart = ({ dataset, active, variant, selectChart, generateRandom }) => {
+const Chart = ({ name, dataset, active, variant, selectChart, generateRandom }) => {
   
   const Variant = chartVariants[variant].component;
   console.log(Variant);
@@ -38,13 +39,13 @@ const Chart = ({ dataset, active, variant, selectChart, generateRandom }) => {
   return (
     <Card onClick={selectChart} active={active} style={{ margin: '1rem' }}>
       <Flexbox parent direction="column">
+        {name && (
+          <Segment padding="0 0 1rem">
+            <h5>Dataset {name}</h5>
+          </Segment>
+        )}
         <Flexbox child grow="1" shrink="1">
           {renderChart(dataset)}
-        </Flexbox>
-        <Flexbox child parent direction="row" gap="1rem">
-          <button onClick={generateRandom}>Fill Data</button>
-          <button>Grid On</button>
-          <button>Axes On</button>
         </Flexbox>
       </Flexbox>
     </Card>

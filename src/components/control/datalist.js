@@ -8,7 +8,7 @@ const Datalist = ({ datasets }) => {
   const entries = Object.entries(datasets);
 
   return (
-    <List variant="inset" maxHeight="15rem" width="300px">
+    <List variant="inset" maxHeight="12rem" width="300px">
       {entries.length ? entries
         .filter(([key, data]) => data !== null)
         .map(([key, data]) => (
