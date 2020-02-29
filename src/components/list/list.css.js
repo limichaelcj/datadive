@@ -7,6 +7,9 @@ const insetStyle = css`
   box-shadow: inset ${props => props.theme.shadow.sm};
   overflow-x: hidden;
   overflow-y: scroll;
+  & > *:nth-child(even) {
+    background-color: ${props => props.theme.background.dark};
+  }
 `;
 
 export default styled.ul`

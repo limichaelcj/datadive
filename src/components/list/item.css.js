@@ -3,9 +3,6 @@ import styled, { css } from 'styled-components';
 const insetStyle = css`
   padding: .5rem;
   width: 100%;
-  &:nth-child(even) {
-    background-color: ${props => props.theme.background.dark};
-  }
   &, * {
     display: block;
     overflow: hidden;
