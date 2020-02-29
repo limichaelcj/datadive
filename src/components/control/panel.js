@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Styled from './panel.css';
 import Segment from '../segment/segment';
+import Flexbox from '../flex/flexbox';
 import Datalist from './datalist';
 import ChartList from './chartList';
 import series from '../chart/lib/variants';
@@ -10,11 +11,13 @@ const ControlPanel = ({ datasets, selectedSeries, setSeries, generateRandom }) =
   return (
     <Styled>
       <Segment>
-        <h3>Datasets</h3>
+        <Flexbox parent direction="row" align="center" justify="space-between">
+          <h3>Datasets</h3>
+          <button onClick={generateRandom}>
+            Random
+          </button>
+        </Flexbox>
         <Datalist datasets={datasets} />
-        <button onClick={generateRandom}>
-          Generate Random
-        </button>
       </Segment>
       <Segment>
         <h3>Chart Types</h3>

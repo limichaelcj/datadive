@@ -12,4 +12,7 @@ export default styled.div.attrs(props => ({
     ${props => props.parent ? cssParent : ''}
     ${props => props.child ? cssChild : ''}
   `}
+  & > * {
+    display: inline-block;
+  }
 `;
