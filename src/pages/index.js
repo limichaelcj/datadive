@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
+import Header from '../components/header/header';
 import Flexbox from '../components/flex/flexbox';
 import Segment from '../components/segment/segment';
 import ControlPanel from '../components/control/panel';
@@ -53,8 +54,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Data Dive" />
-      <h1>Data Dive</h1>
-      <Flexbox parent direction="row">
+      <Header />
+      <Flexbox parent direction="row" style={{position: 'relative', zIndex: 0}}>
 
         {/* Left Panel */}
         <Flexbox child basis="20rem">
