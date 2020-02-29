@@ -5,7 +5,7 @@ export default css`
   flex-direction: ${props => props.direction};
   justify-content: ${props => props.justify};
   align-items: ${props => props.align};
-  flex-wrap: ${props => props.wrap ? 'wrap' : 'nowrap'};
+  flex-wrap: ${props => props.flexwrap ? 'wrap' : 'nowrap'};
 
   ${props => props.gap ? css`
     & > *:not(:${props => props.gapSelector}-child) {

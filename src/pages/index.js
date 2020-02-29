@@ -100,7 +100,7 @@ const IndexPage = () => {
             <Segment padding="0 1rem">
               <h2>Charts</h2>
             </Segment>
-            <Flexbox parent direction="row" wrap align="center">
+            <Flexbox parent direction="row" flexwrap align="center">
               {Object.entries(state.charts).map(([key, chart]) => (
                 <Chart
                   key={key}

@@ -12,7 +12,7 @@ const ListItem = (props) => {
 
 ListItem.propTypes = {
   children: PropTypes.node,
-  variant: PropTypes.oneOf(['flat', 'inset']),
+  variant: PropTypes.oneOf(['flat', 'inset', 'base']),
   active: PropTypes.bool,
   style: PropTypes.object,
 };
