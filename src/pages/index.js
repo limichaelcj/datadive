@@ -11,6 +11,7 @@ import NewChart from '../components/chart/new';
 const IndexPage = () => {
 
   const [state, setState] = React.useState({
+    selected: null,
     data: {},
     charts: {},
   });
@@ -24,7 +25,14 @@ const IndexPage = () => {
         [Object.keys(state.charts).length]: { datakey: null },
       },
     });
-  }
+  };
+
+  const selectChart = (key) => () => {
+    setState({
+      ...state,
+      selected: key,
+    })
+  };
 
   // functon generator:
   // generates random data for the selected chart
@@ -49,7 +57,9 @@ const IndexPage = () => {
         }
       }
     });
-  }
+  };
+
+  console.log(state.selected)
 
   return (
     <Layout>
@@ -73,7 +83,9 @@ const IndexPage = () => {
                 <Chart
                   key={key}
                   dataset={state.data[chart.datakey]}
+                  active={state.selected === key}
                   generateRandom={generateRandom(key)}
+                  selectChart={selectChart(key)}
                 />
               ))}
               <NewChart onClick={createChart} />

@@ -7,17 +7,19 @@ const Card = (props) => {
     <Styled {...props}>
       {props.children}
     </Styled>
-  )
+  );
 };
 
 Card.propTypes = {
   children: PropTypes.node,
+  active: PropTypes.bool,
   width: PropTypes.string,
   height: PropTypes.string,
   style: PropTypes.object,
 }
 
 Card.defaultProps = {
+  active: false,
   width: 'auto',
   height: 'auto',
 }

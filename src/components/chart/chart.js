@@ -14,7 +14,9 @@ import {
 // import react-vis stylesheet
 import '../../../node_modules/react-vis/dist/style.css';
 
-const Chart = ({ dataset, generateRandom }) => {
+const Chart = ({ dataset, active, selectChart, generateRandom }) => {
+
+
 
   const renderChart = (data) => {
     if (data) {
@@ -35,7 +37,7 @@ const Chart = ({ dataset, generateRandom }) => {
   }
 
   return (
-    <Card style={{ margin: '1rem' }}>
+    <Card onClick={selectChart} active={active} style={{ margin: '1rem' }}>
       <Flexbox parent direction="column">
         <Flexbox child grow="1" shrink="1">
           {renderChart(dataset)}
@@ -52,6 +54,8 @@ const Chart = ({ dataset, generateRandom }) => {
 
 Chart.propTypes = {
   dataset: PropTypes.array,
+  active: PropTypes.bool,
+  selectChart: PropTypes.func,
   handleHydrate: PropTypes.func,
 }
 
