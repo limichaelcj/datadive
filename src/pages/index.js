@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
 import Flexbox from '../components/flex/flexbox';
 import Chart from '../components/chart/chart';

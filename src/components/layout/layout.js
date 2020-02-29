@@ -7,8 +7,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import GlobalStyles from './global.css';
 import { useStaticQuery, graphql } from 'gatsby';
-import './layout.css';
+import { ThemeProvider } from 'styled-components';
+import theme from './theme';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,9 +25,12 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <main style={{width: '100%', minHeight: '100vh', maxHeight: '100vh'}}>
-        {children}
-      </main>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <main style={{width: '100%', minHeight: '100vh', maxHeight: '100vh'}}>
+          {children}
+        </main>
+      </ThemeProvider>
     </>
   );
 }
