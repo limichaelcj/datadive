@@ -11,7 +11,6 @@ export default styled.div`
   align-items: center;
   font-size: 5rem;
   color: ${props => props.theme.primary.main};
-  font-weight: bold;
   cursor: pointer;
   user-select: none;
   margin: 100px;
