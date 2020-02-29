@@ -2,6 +2,8 @@ import React from 'react';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
 import Flexbox from '../components/flex/flexbox';
+import Segment from '../components/segment/segment';
+import ControlPanel from '../components/control/panel';
 import Chart from '../components/chart/chart';
 import NewChart from '../components/chart/new';
 
@@ -56,30 +58,26 @@ const IndexPage = () => {
 
         {/* Left Panel */}
         <Flexbox child basis="20rem">
-          <h3>Chart Types</h3>
-          <ul>
-            {[1,2,3,4,5,6].map((v,i) => (
-              <li key={i}>
-                <strong>Chart Type {v}</strong>
-                <p>Description of chart type {v}...</p>
-              </li>
-            ))}
-          </ul>
+          <ControlPanel datasets={state.data} />
         </Flexbox>
 
         {/* Right Panel */}
         <Flexbox child grow="1" shrink="1">
-          <h3>Chart Visualizer</h3>
-          <Flexbox parent direction="row" wrap align="center">
-            {Object.entries(state.charts).map(([key, chart]) => (
-              <Chart
-                key={key}
-                dataset={state.data[chart.datakey]}
-                generateRandom={generateRandom(key)}
-              />
-            ))}
-            <NewChart onClick={createChart} />
-          </Flexbox>
+          <Segment>
+            <Segment padding="0 1rem">
+              <h2>Charts</h2>
+            </Segment>
+            <Flexbox parent direction="row" wrap align="center">
+              {Object.entries(state.charts).map(([key, chart]) => (
+                <Chart
+                  key={key}
+                  dataset={state.data[chart.datakey]}
+                  generateRandom={generateRandom(key)}
+                />
+              ))}
+              <NewChart onClick={createChart} />
+            </Flexbox>
+          </Segment>
         </Flexbox>
 
       </Flexbox>

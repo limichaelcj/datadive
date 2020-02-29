@@ -2,6 +2,21 @@ import chroma from 'chroma-js';
 
 // chroma config
 const scaleSoft = .2;
+const scaleAlpha = {
+  vl: .1,
+  lt: .3,
+  md: .5,
+  st: .7,
+  vs: .9,
+}
+const getAlphaLevels = (color) => {
+  const scale = Object.entries(scaleAlpha);
+  const alphas = {};
+  scale.forEach(([k,v]) => {
+    alphas[k] = chroma(color).alpha(v);
+  });
+  return alphas;
+}
 
 // colors
 const black = '#111';
@@ -12,9 +27,16 @@ export default {
   black,
   white,
   primary,
+  alpha: {
+    black: getAlphaLevels(black),
+    white: getAlphaLevels(white),
+  },
   text: black,
-  background: chroma(white).darken(scaleSoft),
-  paper: white,
+  background: {
+    main: chroma(white).darken(scaleSoft),
+    dark: chroma(white).darken(scaleSoft * 2),
+    light: white,
+  },
   shadow: {
     sm: `.1rem .1rem 1rem -.5rem ${chroma(black).alpha(.2)}`,
     md: `.2rem .2rem 1.4rem -.7rem ${chroma(black).alpha(.4)}`,

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  background-color: ${props => props.theme.paper};
+  background-color: ${props => props.theme.background.light};
   padding: 2rem;
   box-shadow: ${props => props.theme.shadow.sm};
   display: inline-block;
