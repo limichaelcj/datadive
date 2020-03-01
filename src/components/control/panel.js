@@ -11,6 +11,13 @@ const ControlPanel = ({ datasets, selectedSeries, setSeries, generateRandom }) =
   return (
     <Styled>
       <Segment>
+        <h3>Chart Types</h3>
+        <ChartList
+          active={selectedSeries}
+          setSeries={setSeries}
+        />
+      </Segment>
+      <Segment>
         <Flexbox parent direction="row" align="center" justify="space-between">
           <h3>Datasets</h3>
           <button onClick={generateRandom}>
@@ -18,13 +25,6 @@ const ControlPanel = ({ datasets, selectedSeries, setSeries, generateRandom }) =
           </button>
         </Flexbox>
         <Datalist datasets={datasets} />
-      </Segment>
-      <Segment>
-        <h3>Chart Types</h3>
-        <ChartList
-          active={selectedSeries}
-          setSeries={setSeries}
-        />
       </Segment>
     </Styled>
   );

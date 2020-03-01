@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Nav from './nav.css';
+import Bar from './bar.css';
 
 const Header = (props) => {
 
@@ -19,9 +19,9 @@ const Header = (props) => {
   );
 
   return (
-    <Nav>
+    <Bar>
       <h1>{site.siteMetadata.title}</h1>
-    </Nav>
+    </Bar>
   );
 };
 

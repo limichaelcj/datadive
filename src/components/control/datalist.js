@@ -9,7 +9,7 @@ const Datalist = ({ datasets }) => {
   const entries = Object.entries(datasets);
 
   return (
-    <List variant="inset" maxHeight="12rem" width="300px">
+    <List variant="inset" maxHeight="46vh" width="300px">
       {entries.length ? entries
         .map(([key, dataset]) => (
           <Draggable

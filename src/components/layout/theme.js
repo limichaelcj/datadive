@@ -56,4 +56,9 @@ export default {
   transition: {
     button: '100ms ease-out',
   },
+  layout: {
+    header: {
+      height: '4rem',
+    }
+  }
 }

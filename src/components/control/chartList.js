@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import List from '../list/list';
+import Flexbox from '../flex/flexbox';
 import ListItem from '../list/item';
 import chartVariants from '../chart/lib/variants';
 
@@ -10,19 +11,22 @@ const entries = Object.entries(chartVariants);
 const ChartList = ({ active, setSeries }) => {
 
   return (
-    <List>
+    <Flexbox parent direction="row" flexwrap as="ul">
       {entries.map(([k,v], i) => (
         <ListItem
           variant="flat"
           key={k}
           active={active === k}
-          style={{cursor: active !== null ? 'pointer' : 'auto'}}
           onClick={active !== null ? setSeries(k) : null}
+          style={{
+            flex: '0 0 50%',
+            cursor: active !== null ? 'pointer' : 'auto',
+          }}
         >
-          {v.name} Series
+          {v.name}
         </ListItem>
       ))}
-    </List>
+    </Flexbox>
   );
 };
 

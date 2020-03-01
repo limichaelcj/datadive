@@ -12,4 +12,5 @@ export default styled.nav`
   background-color: ${props => props.theme.background.light};
   border-bottom: 1px solid ${props => props.theme.alpha.black.vl};
   box-shadow: ${props => props.theme.shadow.sm};
+  height: ${props => props.theme.layout.header.height};
 `;
