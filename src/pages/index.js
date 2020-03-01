@@ -74,6 +74,11 @@ const IndexPage = () => {
 
   // link data to chart
   const linkDataToChart = (chartkey) => (datakey) => {
+
+    const chartDatasets = state.charts[chartkey].datasets;
+    // do nothing if data is already in chart
+    if (chartDatasets.includes(datakey)) return;
+
     setState({
       ...state,
       charts: {
@@ -81,7 +86,7 @@ const IndexPage = () => {
         [chartkey]: {
           ...state.charts[chartkey],
           datasets: [
-            ...state.charts[chartkey].datasets,
+            ...chartDatasets,
             datakey,
           ],
         }

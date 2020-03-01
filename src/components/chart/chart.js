@@ -36,7 +36,7 @@ const Chart = ({ name, datasets, active, variant, selectChart, linkData }) => {
           <XAxis />
           <YAxis />
           {datasets.map(set => (
-            <Variant data={set.data} />
+            <Variant key={set.name} data={set.data} />
           ))}
         </XYPlot>
       </Flexbox>
