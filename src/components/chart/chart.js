@@ -16,7 +16,7 @@ import chartVariants from './lib/variants';
 // import react-vis stylesheet
 import '../../../node_modules/react-vis/dist/style.css';
 
-const Chart = ({ name, dataset, active, variant, selectChart, linkData }) => {
+const Chart = ({ name, datasets, active, variant, selectChart, linkData }) => {
 
   const Variant = chartVariants[variant].component;
 
@@ -24,10 +24,10 @@ const Chart = ({ name, dataset, active, variant, selectChart, linkData }) => {
     linkData(dropData.datakey);
   };
 
-  const renderChart = (dataset) => (
+  const renderChart = (datasets) => (
     <Flexbox parent direction="column">
       <Segment padding="0 0 1rem">
-        <h5>{dataset.name}</h5>
+        <h5>{name}</h5>
       </Segment>
       <Flexbox child grow="1" shrink="1">
         <XYPlot height={300} width={300}>
@@ -35,7 +35,9 @@ const Chart = ({ name, dataset, active, variant, selectChart, linkData }) => {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <Variant data={dataset.data} />
+          {datasets.map(set => (
+            <Variant data={set.data} />
+          ))}
         </XYPlot>
       </Flexbox>
     </Flexbox>
@@ -48,14 +50,14 @@ const Chart = ({ name, dataset, active, variant, selectChart, linkData }) => {
       handleDrop={dataDrop}
     >
       <Card onClick={selectChart} active={active} style={{ margin: '1rem' }}>
-        {dataset ? renderChart(dataset) : <NoData />}
+        {datasets.length ? renderChart(datasets) : <NoData />}
       </Card>
     </Droppable>
   );
 };
 
 Chart.propTypes = {
-  dataset: PropTypes.array,
+  datasets: PropTypes.array,
   active: PropTypes.bool,
   variant: PropTypes.oneOf(Object.keys(chartVariants)),
   selectChart: PropTypes.func,
@@ -63,6 +65,7 @@ Chart.propTypes = {
 }
 
 Chart.defaultProps = {
+  datasets: [],
   variant: 'Line',
 }
 

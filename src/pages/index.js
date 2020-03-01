@@ -23,7 +23,7 @@ const IndexPage = () => {
       charts: {
         ...state.charts,
         [Object.keys(state.charts).length]: {
-          datakey: null,
+          datasets: [],
           series: 'Line',
         },
       },
@@ -80,7 +80,10 @@ const IndexPage = () => {
         ...state.charts,
         [chartkey]: {
           ...state.charts[chartkey],
-          datakey,
+          datasets: [
+            ...state.charts[chartkey].datasets,
+            datakey,
+          ],
         }
       }
     });
@@ -111,15 +114,17 @@ const IndexPage = () => {
               <h2>Charts</h2>
             </Segment>
             <Flexbox parent direction="row" flexwrap align="center">
-              {Object.entries(state.charts).map(([key, chart]) => (
+              {Object.entries(state.charts).map(([chartkey, chart]) => (
                 <Chart
-                  key={key}
-                  name={chart.datakey || null}
-                  dataset={state.data[chart.datakey]}
+                  key={chartkey}
+                  name={`Chart ${chartkey}`}
+                  datasets={Object.entries(state.data).filter(([datakey,_]) => {
+                    return chart.datasets.includes(datakey);
+                  }).map(([_, dataset]) => dataset)}
                   variant={chart.series}
-                  active={state.selected === key}
-                  selectChart={selectChart(key)}
-                  linkData={linkDataToChart(key)}
+                  active={state.selected === chartkey}
+                  selectChart={selectChart(chartkey)}
+                  linkData={linkDataToChart(chartkey)}
                 />
               ))}
               <NewChart onClick={createChart} />
