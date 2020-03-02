@@ -119,7 +119,10 @@ const IndexPage = () => {
         <Flexbox child grow="1" shrink="1" basis="auto" onClick={selectChart(null)}>
           <Segment>
             <Segment padding="0 1rem">
-              <h2>Charts</h2>
+              <Flexbox direction="row" align="center" gap="1rem">
+                <h2>Charts</h2>
+                <button onClick={createChart}>+</button>
+              </Flexbox>
             </Segment>
             <Flexbox direction="row" flexwrap align="center">
               {Object.entries(state.charts).map(([chartkey, chart]) => (
@@ -135,7 +138,6 @@ const IndexPage = () => {
                   linkData={linkDataToChart(chartkey)}
                 />
               ))}
-              <NewChart onClick={createChart} />
             </Flexbox>
           </Segment>
         </Flexbox>
