@@ -100,7 +100,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Data Dive" />
       <Header />
-      <Flexbox parent direction="row" style={{position: 'relative', zIndex: 0}}>
+      <Flexbox direction="row" style={{position: 'relative', zIndex: 0}}>
 
         {/* Left Panel */}
         <Flexbox child basis="20rem">
@@ -118,7 +118,7 @@ const IndexPage = () => {
             <Segment padding="0 1rem">
               <h2>Charts</h2>
             </Segment>
-            <Flexbox parent direction="row" flexwrap align="center">
+            <Flexbox direction="row" flexwrap align="center">
               {Object.entries(state.charts).map(([chartkey, chart]) => (
                 <Chart
                   key={chartkey}

@@ -18,7 +18,7 @@ const ControlPanel = ({ datasets, selectedSeries, setSeries, generateRandom }) =
         />
       </Segment>
       <Segment>
-        <Flexbox parent direction="row" align="center" justify="space-between">
+        <Flexbox direction="row" align="center" justify="space-between">
           <h3>Datasets</h3>
           <button onClick={generateRandom}>
             Random

@@ -11,7 +11,7 @@ const entries = Object.entries(chartVariants);
 const ChartList = ({ active, setSeries }) => {
 
   return (
-    <Flexbox parent direction="row" flexwrap as="ul">
+    <Flexbox direction="row" flexwrap as="ul">
       {entries.map(([k,v], i) => (
         <ListItem
           variant="flat"

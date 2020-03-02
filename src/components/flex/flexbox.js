@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Styled from './flexbox.css';
 
-const Flexbox = (props) => (
-  <Styled {...props}>
-    {props.children}
-  </Styled>
-);
+const Flexbox = (props) => {
+
+  const isParent = !props.parent && !props.child ? true : props.parent;
+
+  return (
+    <Styled {...props} parent={isParent}>
+      {props.children}
+    </Styled>
+  );
+};
 
 Flexbox.propTypes = {
   children: PropTypes.node,

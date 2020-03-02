@@ -25,7 +25,7 @@ const Chart = ({ name, datasets, active, variant, selectChart, linkData }) => {
   };
 
   const renderChart = (datasets) => (
-    <Flexbox parent direction="column">
+    <Flexbox direction="column">
       <Segment padding="0 0 1rem">
         <h5>{name}</h5>
       </Segment>
