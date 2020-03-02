@@ -51,9 +51,9 @@ export default {
     light: white,
   },
   shadow: {
-    sm: `.1rem .1rem 1rem -.5rem ${chroma(black).alpha(.2)}`,
-    md: `.2rem .2rem 1.4rem -.7rem ${chroma(black).alpha(.4)}`,
-    lg: `.3rem .3rem 1.8rem -.9rem ${chroma(black).alpha(.6)}`,
+    sm: (x = 1) => `${x*.1}rem .1rem 1rem -.5rem ${chroma(black).alpha(.2)}`,
+    md: (x = 1) => `${x*.2}rem .2rem 1.4rem -.7rem ${chroma(black).alpha(.4)}`,
+    lg: (x = 1) => `${x*.3}rem .3rem 1.8rem -.9rem ${chroma(black).alpha(.6)}`,
   },
   transition: {
     default: '200ms ease-out',

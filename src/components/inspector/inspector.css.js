@@ -6,4 +6,5 @@ export default styled.div`
   width: ${props => props.theme.layout.inspector.width};
   background-color: ${props => props.theme.background.light};
   display: ${props => props.open ? 'inline-block' : 'none'};
+  box-shadow: ${props => props.theme.shadow.sm(-1)};
 `;

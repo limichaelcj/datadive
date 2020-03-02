@@ -4,7 +4,7 @@ const insetStyle = css`
   background-color: ${props => props.theme.background.main};
   border-radius: 2px;
   border: 1px solid ${props => props.theme.alpha.black.vl};
-  box-shadow: inset ${props => props.theme.shadow.sm};
+  box-shadow: inset ${props => props.theme.shadow.sm()};
   overflow-x: hidden;
   overflow-y: scroll;
   & > *:nth-child(even) {

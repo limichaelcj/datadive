@@ -20,7 +20,7 @@ export default styled.div`
   }
   &:hover {
     transform: scale(1.02);
-    box-shadow: ${props => props.theme.shadow.md};
+    box-shadow: ${props => props.theme.shadow.md()};
      span {
        transform: scale(1.2);
      }

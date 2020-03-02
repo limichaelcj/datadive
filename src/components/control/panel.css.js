@@ -5,4 +5,5 @@ export default styled.div`
   max-height: ${props => props.theme.layout.main.height};
   width: 100%;
   background-color: ${props => props.theme.background.light};
+  box-shadow: ${props => props.theme.shadow.sm()};
 `;

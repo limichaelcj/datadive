@@ -11,6 +11,6 @@ export default styled.nav`
   align-items: center;
   background-color: ${props => props.theme.background.light};
   border-bottom: 1px solid ${props => props.theme.alpha.black.vl};
-  box-shadow: ${props => props.theme.shadow.sm};
+  box-shadow: ${props => props.theme.shadow.sm(0)};
   height: ${props => props.theme.layout.header.height};
 `;
