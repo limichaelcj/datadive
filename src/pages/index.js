@@ -18,7 +18,8 @@ const IndexPage = () => {
   });
 
   // creates a new chart with no data
-  const createChart = () => {
+  const createChart = (e) => {
+    e.stopPropagation();
     setState({
       ...state,
       charts: {
@@ -31,11 +32,13 @@ const IndexPage = () => {
     });
   };
 
-  const selectChart = (key) => () => {
+  const selectChart = (key) => (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setState({
       ...state,
       selected: key,
-    })
+    });
   };
 
   const setSeries = (series) => () => {
@@ -113,7 +116,7 @@ const IndexPage = () => {
         </Flexbox>
 
         {/* Middle Panel */}
-        <Flexbox child grow="1" shrink="1" basis="auto">
+        <Flexbox child grow="1" shrink="1" basis="auto" onClick={selectChart(null)}>
           <Segment>
             <Segment padding="0 1rem">
               <h2>Charts</h2>
