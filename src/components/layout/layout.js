@@ -9,6 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GlobalStyles from './global.css';
 import { ThemeProvider } from 'styled-components';
+import Header from '../header/header';
 import theme from './theme';
 
 const Layout = ({ children }) => {
@@ -17,7 +18,12 @@ const Layout = ({ children }) => {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <main style={{width: '100%', minHeight: '100vh', maxHeight: '100vh'}}>
+        <Header />
+        <main style={{
+          width: '100%',
+          minHeight: theme.layout.main.height,
+          maxHeight: theme.layout.main.height,
+        }}>
           {children}
         </main>
       </ThemeProvider>

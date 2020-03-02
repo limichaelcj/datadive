@@ -30,6 +30,8 @@ const makePalette = (color) => {
 const black = '#111';
 const white = '#fff';
 const primary = '#2C949A';
+// vars
+const headerHeight = '4rem';
 
 export default {
   black,
@@ -54,11 +56,18 @@ export default {
     lg: `.3rem .3rem 1.8rem -.9rem ${chroma(black).alpha(.6)}`,
   },
   transition: {
+    default: '200ms ease-out',
     button: '100ms ease-out',
   },
   layout: {
     header: {
-      height: '4rem',
+      height: headerHeight,
+    },
+    main: {
+      height: `calc(100vh - ${headerHeight})`,
+    },
+    inspector: {
+      width: '400px',
     }
   }
 }

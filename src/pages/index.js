@@ -1,12 +1,13 @@
 import React from 'react';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
-import Header from '../components/header/header';
 import Flexbox from '../components/flex/flexbox';
 import Segment from '../components/segment/segment';
 import ControlPanel from '../components/control/panel';
 import Chart from '../components/chart/chart';
 import NewChart from '../components/chart/new';
+import Inspector from '../components/inspector/inspector';
+import theme from '../components/layout/theme';
 
 const IndexPage = () => {
 
@@ -99,8 +100,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Data Dive" />
-      <Header />
-      <Flexbox direction="row" style={{position: 'relative', zIndex: 0}}>
+      <Flexbox direction="row" align="stretch" style={{position: 'relative', zIndex: 0}}>
 
         {/* Left Panel */}
         <Flexbox child basis="20rem">
@@ -112,8 +112,8 @@ const IndexPage = () => {
           />
         </Flexbox>
 
-        {/* Right Panel */}
-        <Flexbox child grow="1" shrink="1">
+        {/* Middle Panel */}
+        <Flexbox child grow="1" shrink="1" basis="auto">
           <Segment>
             <Segment padding="0 1rem">
               <h2>Charts</h2>
@@ -135,6 +135,11 @@ const IndexPage = () => {
               <NewChart onClick={createChart} />
             </Flexbox>
           </Segment>
+        </Flexbox>
+
+        {/* Right Panel */}
+        <Flexbox child basis="auto">
+          <Inspector open={state.selected !== null} chart={state.charts[state.selected]} />
         </Flexbox>
 
       </Flexbox>
